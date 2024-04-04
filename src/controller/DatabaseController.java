@@ -2,6 +2,7 @@ package controller;
 
 import model.Connect;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class DatabaseController {
 
@@ -19,8 +20,8 @@ public class DatabaseController {
         conn = connect.getConnection();
     }
 
-    // public void setWorkerTable( ArrayList<Worker> workers ) {
+    public void setCitesTable( ArrayList<String> cities ) {
 
-
-    // }
+        
+    }
 }

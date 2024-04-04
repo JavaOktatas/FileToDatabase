@@ -8,6 +8,7 @@ public class MainController {
     private FileController fileCtrl;
     private DatabaseController dbCtrl;
     private ArrayList<Worker> workers;
+    private ArrayList<String> cities;
 
     public MainController() {
 
@@ -16,17 +17,17 @@ public class MainController {
          start();
     }
 
-    public void start() {
+    private void start() {
 
         dbCtrl = new DatabaseController();
         fileCtrl = new FileController( dbCtrl );
         getWorkersFromFile();
     }
 
-    public void getWorkersFromFile() {
+    private void getWorkersFromFile() {
 
         workers = new ArrayList<>();
-        ArrayList<String> cities = new ArrayList<>();
+        cities = new ArrayList<>();
         workers = fileCtrl.getWorkers();
         
         for (int i = 0; i < workers.size(); i++) {
@@ -37,6 +38,10 @@ public class MainController {
                 cities.add( worker.getCity() );
             }
         }
-        System.out.println( cities );
+    }
+
+    private void setCitiesToDatabase() {
+
+        
     }
 }
