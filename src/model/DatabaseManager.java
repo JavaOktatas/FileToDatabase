@@ -21,15 +21,40 @@ public class DatabaseManager {
 
         String[] sql = null;
         Path filePath = Path.of( fileName );
+        
         try {
             
             String content = Files.readString( filePath );
             sql = content.split( ";" );
-
-        } catch ( Exception ex ) {
+            
+        } catch ( IOException ex ) {
             
             System.out.println( "Fájl olvasási hiba" );
+            //System.out.println( ex.getMessage() );
         }
         return sql;
+    }
+
+    public boolean setCitesData( Connection conn, ArrayList<String> cities ) {
+
+        PreparedStatement pstmt = null;
+        String[] sql = getSql();
+        try {
+            
+            for( String city : cities ) {
+
+                pstmt = conn.prepareStatement( sql[ 0 ]);
+                pstmt.setString( 1, city );
+                pstmt.execute();
+            }
+
+            return true;
+
+        } catch ( SQLException ex ) {
+            
+            System.out.println( "Hiba a kiírás során" );
+
+            return false;
+        }
     }
 }

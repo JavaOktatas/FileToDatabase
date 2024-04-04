@@ -1,6 +1,8 @@
 package controller;
 
 import model.Connect;
+import model.DatabaseManager;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -20,8 +22,11 @@ public class DatabaseController {
         conn = connect.getConnection();
     }
 
-    public void setCitesTable( ArrayList<String> cities ) {
+    public boolean setCitesTable( ArrayList<String> cities ) {
 
-        
+        DatabaseManager dbManager = new DatabaseManager( "__SETCITIES__" );
+        boolean success = dbManager.setCitesData( conn, cities );
+
+        return success;
     }
 }

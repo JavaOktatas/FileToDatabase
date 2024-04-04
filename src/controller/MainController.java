@@ -22,6 +22,7 @@ public class MainController {
         dbCtrl = new DatabaseController();
         fileCtrl = new FileController( dbCtrl );
         getWorkersFromFile();
+        setCitiesToDatabase();
     }
 
     private void getWorkersFromFile() {
@@ -42,6 +43,14 @@ public class MainController {
 
     private void setCitiesToDatabase() {
 
-        
+        boolean success = dbCtrl.setCitesTable( cities );
+        if( success ) {
+
+            System.out.println( "Városok kiírása sikeres" );
+
+        }else {
+
+            System.out.println( "Hiba a városok kiírása közben" );
+        }
     }
 }
