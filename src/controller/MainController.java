@@ -23,6 +23,7 @@ public class MainController {
         fileCtrl = new FileController( dbCtrl );
         getWorkersFromFile();
         setCitiesToDatabase();
+        setWorkersToDatabase();
     }
 
     private void getWorkersFromFile() {
@@ -57,5 +58,13 @@ public class MainController {
     private void setWorkersToDatabase() {
 
         boolean success = dbCtrl.setWorkersTable( workers );
+        if( success ) {
+
+            System.out.println( "Dolgozók kiírása sikeres" );
+
+        }else {
+
+            System.out.println( "Hiba a dolgozók kiírása közben" );
+        }
     }
 }

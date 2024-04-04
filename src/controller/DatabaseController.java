@@ -2,6 +2,7 @@ package controller;
 
 import model.Connect;
 import model.DatabaseManager;
+import model.Worker;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class DatabaseController {
 
     public void buildConnection() {
 
-        Connect connect = new Connect( "tanar_worker", "tanar", "123" );
+        Connect connect = new Connect( "resahh_worker", "resahh", "hajakend" );
         connect.connecting();
         conn = connect.getConnection();
     }

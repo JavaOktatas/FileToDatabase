@@ -1,2 +1,2 @@
 INSERT INTO workers( name, city_id, address, salary, bonus, borndate, hiredate ) VALUES
-( ?, ( SELECT id FROM cites WHERE city = ? ), ?, ?, ?, ?, ? );
+( ?, ( SELECT id FROM cities WHERE city = ? ), ?, ?, ?, ?, ? );

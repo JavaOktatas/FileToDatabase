@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS tanar_worker;
-CREATE DATABASE tanar_worker;
-USE tanar_worker;
+DROP DATABASE IF EXISTS resahh_worker;
+CREATE DATABASE resahh_worker;
+USE resahh_worker;
 
 CREATE TABLE cities (
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,

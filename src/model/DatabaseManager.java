@@ -70,16 +70,18 @@ public class DatabaseManager {
                 pstmt = conn.prepareStatement( sql[ 0 ] );
                 pstmt.setString( 1, worker.getName() );
                 pstmt.setString( 2, worker.getCity() );
-                pstmt.setInt( 3, Integer.parseInt( worker.getSalary() ));
-                pstmt.setInt( 4, Integer.parseInt( worker.getBonus() ));
-                pstmt.setDate(5, Date.valueOf( worker.getBornDate() ));
-                pstmt.setDate( 6, Date.valueOf( worker.getHireDate() ));
+                pstmt.setString( 3, worker.getAddress() );
+                pstmt.setInt( 4, Integer.parseInt( worker.getSalary() ));
+                pstmt.setInt( 5, Integer.parseInt( worker.getBonus() ));
+                pstmt.setDate(6, Date.valueOf( worker.getBornDate() ));
+                pstmt.setDate( 7, Date.valueOf( worker.getHireDate() ));
                 pstmt.execute();
 
             }
         } catch ( SQLException ex ) {
             
             System.out.println( "Hiba a dolgozók kiírása során");
+            System.out.println( ex.getMessage() );
 
             return false;
         }
