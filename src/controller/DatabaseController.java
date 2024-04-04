@@ -29,4 +29,12 @@ public class DatabaseController {
 
         return success;
     }
+
+    public boolean setWorkersTable( ArrayList<Worker> workers ) {
+
+        DatabaseManager databaseManager = new DatabaseManager( "__SETWORKERS__" );
+        boolean success = databaseManager.setWorkersData( conn, workers );
+
+        return success;
+    }
 }

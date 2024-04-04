@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.Date;
 
 public class DatabaseManager {
 
@@ -56,5 +57,33 @@ public class DatabaseManager {
 
             return false;
         }
+    }
+
+    public boolean setWorkersData( Connection conn, ArrayList<Worker> workers ) {
+
+        PreparedStatement pstmt = null;
+        String[] sql = getSql();
+        try {
+            
+            for( Worker worker : workers ) {
+
+                pstmt = conn.prepareStatement( sql[ 0 ] );
+                pstmt.setString( 1, worker.getName() );
+                pstmt.setString( 2, worker.getCity() );
+                pstmt.setInt( 3, Integer.parseInt( worker.getSalary() ));
+                pstmt.setInt( 4, Integer.parseInt( worker.getBonus() ));
+                pstmt.setDate(5, Date.valueOf( worker.getBornDate() ));
+                pstmt.setDate( 6, Date.valueOf( worker.getHireDate() ));
+                pstmt.execute();
+
+            }
+        } catch ( SQLException ex ) {
+            
+            System.out.println( "Hiba a dolgozók kiírása során");
+
+            return false;
+        }
+
+        return true;
     }
 }

@@ -53,4 +53,9 @@ public class MainController {
             System.out.println( "Hiba a városok kiírása közben" );
         }
     }
+
+    private void setWorkersToDatabase() {
+
+        boolean success = dbCtrl.setWorkersTable( workers );
+    }
 }
