@@ -7,14 +7,18 @@ import java.util.ArrayList;
 
 public class FileController {
 
-    public FileController() {
+    protected ArrayList<Worker> workers;
+    private DatabaseController dbCtr;
 
+    public FileController( DatabaseController dbCrt ) {
+
+        this.dbCtr = dbCrt;
     }
 
     public ArrayList<Worker> getWorkers() {
 
         WorkerFileReader wfr = new WorkerFileReader();
-        ArrayList<Worker> workers = new ArrayList<>();
+        workers = new ArrayList<>();
 
         workers = wfr.readFile( "feherBt.txt" );
 

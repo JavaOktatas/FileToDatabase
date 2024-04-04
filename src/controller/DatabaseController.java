@@ -1,9 +1,26 @@
 package controller;
 
+import model.Connect;
+import java.sql.Connection;
+
 public class DatabaseController {
+
+    private Connection conn;
 
     public DatabaseController() {
 
-        System.out.println("Hello");
+        buildConnection();
     }
+
+    public void buildConnection() {
+
+        Connect connect = new Connect( "tanar_worker", "tanar", "123" );
+        connect.connecting();
+        conn = connect.getConnection();
+    }
+
+    // public void setWorkerTable( ArrayList<Worker> workers ) {
+
+
+    // }
 }
