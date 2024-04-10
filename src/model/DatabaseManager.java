@@ -88,4 +88,42 @@ public class DatabaseManager {
 
         return true;
     }
+
+    public boolean setDataToDatabase( Connection conn, ArrayList<Worker> workers, ArrayList<String> cities ) {
+
+        PreparedStatement pstmt = null;
+        String[] sql = getSql();
+        try {
+            
+            for( String city : cities ) {
+
+                pstmt = conn.prepareStatement( sql[ 0 ] );
+                pstmt.setString( 1, city );
+                pstmt.execute();
+            }
+
+            pstmt = null;
+            
+            for( Worker worker : workers ) {
+
+                pstmt = conn.prepareStatement( sql[ 1 ] );
+                pstmt.setString( 1, worker.getName() );
+                pstmt.setString( 2, worker.getCity() );
+                pstmt.setString( 3, worker.getAddress() );
+                pstmt.setInt( 4, Integer.parseInt( worker.getSalary() ));
+                pstmt.setInt( 5, Integer.parseInt( worker.getBonus() ));
+                pstmt.setDate(6, Date.valueOf( worker.getBornDate() ));
+                pstmt.setDate( 7, Date.valueOf( worker.getHireDate() ));
+                pstmt.execute();
+            }
+            
+            return true;
+
+        } catch ( SQLException ex ) {
+            
+            System.out.println( "Hiba a kiírás során" );
+
+            return false;
+        }
+    }
 }

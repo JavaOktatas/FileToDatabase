@@ -38,4 +38,12 @@ public class DatabaseController {
 
         return success;
     }
+
+    public boolean setAllDataToWorkers( ArrayList<String> cities, ArrayList<Worker> workers ) {
+
+        DatabaseManager dbManager = new DatabaseManager( "__SETFULLDATA__" );
+        boolean success = dbManager.setDataToDatabase( conn, workers, cities );
+
+        return success;
+    }
 }
